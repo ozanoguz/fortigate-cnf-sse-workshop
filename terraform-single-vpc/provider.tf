@@ -5,13 +5,6 @@ terraform {
       version = "~> 4.0"
     }
   }
-   cloud {
-    organization = "40net-cloud"
-
-    workspaces {
-      name = "fortigatecnf-single-vpc"
-    }
-  }
 }
 provider "aws"  {
   region = var.region
