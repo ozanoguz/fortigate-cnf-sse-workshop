@@ -21,5 +21,5 @@ variable "environment" {
   description = "The name of the environment."
  }
 variable "CNF-ENDPOINT" {
-  default = "prod-c160-s96497-endpoint-subnet-08af3a9b8522c5477"
+  default = ""
 }
