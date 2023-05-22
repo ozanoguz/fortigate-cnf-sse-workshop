@@ -5,13 +5,6 @@ terraform {
       version = "~> 4.0"
     }
   }
-  cloud {
-    organization = "40net-cloud"
-
-    workspaces {
-      name = "fortigate-cnf-vpc-demo"
-    }
-  }
 }
 
 provider "aws" {
