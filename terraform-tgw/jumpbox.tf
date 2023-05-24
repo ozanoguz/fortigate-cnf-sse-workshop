@@ -50,7 +50,7 @@ EOF
 resource "aws_security_group" "allow_custom" {
   name        = "allow_custom"
   description = "Allow SSH and HTTP8080 inbound traffic"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.vpc-spoke-egress.id
 
   ingress {
     description      = "SSH"
