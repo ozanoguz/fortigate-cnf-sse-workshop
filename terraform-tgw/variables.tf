@@ -10,6 +10,11 @@ variable "PREFIX" {
   description = "Added name to each deployed resource"
 }
 
+variable "environment" {
+  default = "dev"
+  description = "The name of the environment."
+ }
+ 
 variable "REGION" {
   description = "AWS region"
 }
