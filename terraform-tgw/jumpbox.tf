@@ -43,7 +43,7 @@ sudo docker run -d -p 8080:80 nginx
 EOF
 
   tags = {
-    Name = "${var.prefix}-${var.environment}-ec2-jumpbox"
+    Name = "${var.PREFIX}-${var.environment}-ec2-jumpbox"
   }
 }
 
