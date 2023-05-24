@@ -8,6 +8,7 @@
 # Prefix for all resources created for this deployment in Microsoft Azure
 variable "PREFIX" {
   description = "Added name to each deployed resource"
+  default = "cnflab"
 }
 
 variable "environment" {
@@ -17,6 +18,7 @@ variable "environment" {
  
 variable "REGION" {
   description = "AWS region"
+  default = "eu-west-1"
 }
 
 variable "USERNAME" {
