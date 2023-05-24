@@ -28,7 +28,7 @@ resource "aws_instance" "spoke1-lnx-vm" {
   ami               = data.aws_ami.lnx_ami.id
   instance_type     = var.lnx_vmsize
   availability_zone = local.az1
-  key_name          = var.KEY_PAIR
+  key_name          = "${aws_key_pair.jumpbox_key.key_name}"
   user_data = templatefile("${path.module}/customdata-lnx.tftpl", {
     hostname = "${var.PREFIX}-spoke1-lnx-vm"
     username = var.USERNAME
@@ -73,7 +73,7 @@ resource "aws_instance" "spoke2-lnx-vm" {
   ami               = data.aws_ami.lnx_ami.id
   instance_type     = var.lnx_vmsize
   availability_zone = local.az1
-  key_name          = var.KEY_PAIR
+  key_name          = "${aws_key_pair.jumpbox_key.key_name}"
   user_data = templatefile("${path.module}/customdata-lnx.tftpl", {
     hostname = "${var.PREFIX}-spoke2-lnx-vm"
     username = var.USERNAME
