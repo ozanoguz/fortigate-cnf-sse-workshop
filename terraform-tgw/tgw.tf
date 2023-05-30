@@ -83,9 +83,10 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "tgw-att-vpc-egress" {
 }
 
 # Route Tables Associations - Spoke egress VPC
+## fixed
 resource "aws_ec2_transit_gateway_route_table_association" "tgw-rt-vpc-egress-assoc" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.tgw-att-vpc-egress.id
-  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.tgw-from-inspection-route.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.tgw-from-spoke-route.id
 }
 
 ## Route Tables Propagations - FGT VPC2 Route
