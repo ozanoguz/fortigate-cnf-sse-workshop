@@ -561,3 +561,4 @@ resource "aws_security_group" "spoke2_allow_all" {
     Name = "${var.PREFIX}-sg-spoke2-allow-all"
   }
 }
+
