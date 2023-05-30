@@ -75,7 +75,7 @@ data "aws_vpc_endpoint" "gwlbendpointcnfaz1" {
   count = var.VPC_ENDPOINT_AZ1 == "" ? 0 : 1
   tags = {
     "ManagedBy" : "fwaas"
-    "Name" : var.VPC_ENDPOINT_AZ2
+    "Name" : var.VPC_ENDPOINT_AZ1
   }
 }
 
@@ -413,12 +413,31 @@ resource "aws_route" "egressinternalroutetgwaz1" {
   nat_gateway_id         = aws_nat_gateway.natgw-az1.id
 }
 
+##added to fix
+resource "aws_route" "egressinternalroutetgwaz1-tgw" {
+  depends_on             = [aws_route_table.egressprivatertaz1]
+  route_table_id         = aws_route_table.egressprivatertaz1.id
+  destination_cidr_block = "10.0.0.0/8"
+  transit_gateway_id     = aws_ec2_transit_gateway.tgw.id
+}
+
+
+
 resource "aws_route" "egressinternalroutetgwaz2" {
   depends_on             = [aws_route_table.egressprivatertaz2]
   route_table_id         = aws_route_table.egressprivatertaz2.id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id         = aws_nat_gateway.natgw-az2.id
 }
+
+## added
+resource "aws_route" "egressinternalroutetgwaz2-tgw" {
+  depends_on             = [aws_route_table.egressprivatertaz2]
+  route_table_id         = aws_route_table.egressprivatertaz2.id
+  destination_cidr_block = "10.0.0.0/8"
+  transit_gateway_id     = aws_ec2_transit_gateway.tgw.id
+}
+
 
 resource "aws_route" "egresspublicroutetgwaz1" {
   depends_on             = [aws_route_table.egresspublicrtaz1]
