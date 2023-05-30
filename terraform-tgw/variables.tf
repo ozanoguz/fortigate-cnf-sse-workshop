@@ -41,11 +41,14 @@ variable "KEY_PAIR" {
 }
 
 variable "VPC_ENDPOINT_AZ1" {
-  default = ""
+ default = "prod-c2116-s179442-endpoint-subnet-0ab390c9002a2ae06"
+  #default = ""
+  
 }
 
 variable "VPC_ENDPOINT_AZ2" {
-  default = ""
+  default = "prod-c2116-s179442-endpoint-subnet-0552c79eee8bdbd46"
+  #default = ""
 }
 
 // Availability zones for the region
