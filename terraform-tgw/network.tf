@@ -321,6 +321,7 @@ resource "aws_vpc" "vpc-spoke-egress" {
 resource "aws_subnet" "egresspublicsubnetaz1" {
   vpc_id            = aws_vpc.vpc-spoke-egress.id
   cidr_block        = var.egresspubliccidraz1
+  map_public_ip_on_launch = "true"
   availability_zone = local.az1
   tags = {
     Name = "${var.PREFIX}-spoke-egress-public-subnet-az1"
