@@ -23,3 +23,32 @@ variable "environment" {
 variable "CNF-ENDPOINT" {
   default = ""
 }
+
+variable "fazsize" {
+  default = "m5.xlarge"
+}
+
+variable "fazami" {
+  default = "ami-0155cf8b704ed1b19"
+}
+
+variable "bootstrap_fazvm" {
+  // Change to your own path
+  type    = string
+  default = "fazconfig.conf"
+}
+
+variable "faz_flextoken" {
+  type = string
+  description = "Paste your FortiAnalyzer Flex token ID"
+}
+
+variable "faz_hostname" {
+  type = string
+  default = "FAZ-VM-AWS"
+}
+
+variable "faz_adminpassword" {
+  type = string
+  default = "fortinet"
+}
