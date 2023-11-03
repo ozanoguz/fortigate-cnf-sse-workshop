@@ -32,6 +32,15 @@ resource "aws_subnet" "subnet-public-2" {
 }
 
 # Create a public subnet-3
+resource "aws_subnet" "subnet-public-3" {
+    vpc_id = "${aws_vpc.main.id}"
+    cidr_block = "10.1.100.0/24"
+    map_public_ip_on_launch = "true" //it makes this a public subnet
+    availability_zone = "${var.region}a"
+    tags = {
+        Name = "${var.prefix}-${var.environment}-subnet-cnf-faz"
+    }
+}
 
 # Create a public subnet-4
 
