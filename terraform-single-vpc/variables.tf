@@ -43,6 +43,11 @@ variable "faz_flextoken" {
   description = "Paste your FortiAnalyzer Flex token ID"
 }
 
+variable "faz_hostname" {
+  type = string
+  default = "FAZ-VM-AWS"
+}
+
 variable "faz_adminpassword" {
   type = string
   default = "fortinet"
