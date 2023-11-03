@@ -25,7 +25,7 @@ variable "CNF-ENDPOINT" {
 }
 
 variable "fazsize" {
-  default = "m5.xlarge"
+  default = "m5.2xlarge"
 }
 
 variable "fazami" {
