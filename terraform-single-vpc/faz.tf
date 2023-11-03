@@ -69,6 +69,7 @@ resource "aws_instance" "fazvm" {
   key_name          = "${aws_key_pair.jumpbox_key.key_name}"
   user_data = templatefile("${var.bootstrap_fazvm}", {
     faz_flextoken = "${var.faz_flextoken}"
+    faz_hostname = "${var.faz_hostname}"
     faz_adminpassword = "${var.faz_adminpassword}"
   })
 
