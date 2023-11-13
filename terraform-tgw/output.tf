@@ -7,6 +7,6 @@ output "FortiAnalyzer_Public_IP" {
   value = "${aws_instance.fazvm.public_ip}"
 }
 
-output "FortiAnalyzer_Instance_ID" {
-   value = "${aws_instance.fazvm.id}"
+output "FortiAnalyzer_Login_Password" {
+   value = "${var.faz_adminpassword}"
 }
