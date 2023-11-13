@@ -1,18 +1,18 @@
 ##############################################################################################################
 #
-# FortiGate CNF
+# FortiGate CNF Lab
 # Transit Gateway setup
 #
 ##############################################################################################################
 
-# Prefix for all resources created for this deployment in Microsoft Azure
+# Prefix for all resources created for this deployment in AWS
 variable "PREFIX" {
   description = "Added name to each deployed resource"
-  default = "cnflab"
+  default = "FortiGateCNFLab"
 }
 
 variable "environment" {
-  default = "dev"
+  default = "Dev"
   description = "The name of the environment."
  }
  
@@ -31,19 +31,24 @@ variable "PASSWORD" {
   default     = ""
 }
 
-//AWS Configuration
-variable "ACCESS_KEY" {}
-variable "SECRET_KEY" {}
+// AWS configuration
 
-//  Existing SSH Key on the AWS
+variable "ACCESS_KEY" {
+description = "Enter your Access Key"
+}
+
+variable "SECRET_KEY" {
+description = "Enter your Secret Key"
+}
+
+// Existing SSH Key on the AWS
 variable "KEY_PAIR" {
   default = ""
 }
 
 variable "VPC_ENDPOINT_AZ1" {
  #default = "prod-c2116-s179442-endpoint-subnet-0ab390c9002a2ae06"
- default = ""
-  
+ default = ""  
 }
 
 variable "VPC_ENDPOINT_AZ2" {
@@ -57,6 +62,7 @@ locals {
   az2 = "${var.REGION}b"
 }
 
+// Spoke EC2 AMI ID
 data "aws_ami" "lnx_ami" {
   most_recent = true
   owners      = ["099720109477"] # Canonical
@@ -72,6 +78,7 @@ data "aws_ami" "lnx_ami" {
   }
 }
 
+// Spoke-EC2 VM size
 variable "lnx_vmsize" {
   default = "t4g.micro"
 }
@@ -117,7 +124,7 @@ variable "gwlbcidraz2" {
   default = "10.1.7.0/24"
 }
 
-// VPC for VPC Spoke1
+// VPC for Spoke1
 variable "csvpccidr" {
   default = "10.2.0.0/16"
 }
@@ -138,7 +145,7 @@ variable "csprivatecidraz2" {
   default = "10.2.3.0/24"
 }
 
-// VPC for VPC Spoke2
+// VPC for Spoke2
 variable "cs2vpccidr" {
   default = "10.3.0.0/16"
 }
@@ -159,7 +166,7 @@ variable "cs2privatecidraz2" {
   default = "10.3.3.0/24"
 }
 
-// VPC for VPC Egress
+// VPC for Egress
 variable "egressvpccidr" {
   default = "10.254.0.0/16"
 }
@@ -188,31 +195,40 @@ variable "fortinet_tags" {
     provider : "7EB3B02F-50E5-4A3E-8CB8-2E129258IPSECTUNNELS"
   }
 }
+############################################################
+################# FortiAnalyzer variables ##################
+############################################################
 
+// FortiAnalyzer-VM EC2 size
 variable "fazsize" {
   default = "m5.2xlarge"
 }
 
+// FortiAnalyzer-VM EC2 AMI ID (v7.4.1 BYOL)
 variable "fazami" {
   default = "ami-0155cf8b704ed1b19"
 }
 
+// FortiAnalyzer-VM bootstrap file
 variable "bootstrap_fazvm" {
   // Change to your own path
   type    = string
   default = "fazconfig.conf"
 }
 
+// FortiAnalyzer-VM Flex Token ID
 variable "faz_flextoken" {
   type = string
-  description = "Paste your FortiAnalyzer Flex token ID"
+  description = "Enter your FortiAnalyzer Flex token ID"
 }
 
+// FortiAnalyzer-VM hostname
 variable "faz_hostname" {
   type = string
   default = "FAZ-VM-AWS"
 }
 
+// FortiAnalyzer-VM login password
 variable "faz_adminpassword" {
   type = string
   default = "fortinet"
