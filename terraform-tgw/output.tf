@@ -10,3 +10,8 @@ output "FortiAnalyzer_Public_IP" {
 output "FortiAnalyzer_Login_Password" {
    value = "${var.faz_adminpassword}"
 }
+
+output "private_key" {
+  value     = tls_private_key.key.private_key_pem
+  sensitive = true
+}
