@@ -36,9 +36,9 @@ variable "fazsize" {
   default = "m5.2xlarge"
 }
 
-// FortiAnalyzer-VM EC2 AMI ID (v7.4.1 BYOL)
+// FortiAnalyzer-VM EC2 AMI ID (v7.4.3 BYOL)
 variable "fazami" {
-  default = "ami-0155cf8b704ed1b19"
+  default = "ami-0e6e65a8b90731e39"
 }
 
 // FortiAnalyzer-VM bootstrap file
