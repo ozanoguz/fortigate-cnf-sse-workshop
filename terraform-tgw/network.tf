@@ -74,7 +74,7 @@ resource "aws_route_table_association" "transitprivateassociateaz1" {
 data "aws_vpc_endpoint" "gwlbendpointcnfaz1" {
   count = var.VPC_ENDPOINT_AZ1 == "" ? 0 : 1
   tags = {
-    "ManagedBy" : "fwaas"
+    "ManagedBy" : "FortiGate CNF"
     "Name" : var.VPC_ENDPOINT_AZ1
   }
 }
@@ -102,7 +102,7 @@ resource "aws_route_table_association" "transitprivateassociateaz2" {
 data "aws_vpc_endpoint" "gwlbendpointcnfaz2" {
   count = var.VPC_ENDPOINT_AZ2 == "" ? 0 : 1
   tags = {
-    "ManagedBy" : "fwaas"
+    "ManagedBy" : "FortiGate CNF"
     "Name" : var.VPC_ENDPOINT_AZ2
   }
 }
