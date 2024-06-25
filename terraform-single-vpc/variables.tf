@@ -41,6 +41,13 @@ variable "fazami" {
   default = "ami-0e6e65a8b90731e39"
 }
 
+// FortiAnalyzer-VM bootstrap file
+variable "bootstrap_fazvm" {
+  // Change to your own path
+  type    = string
+  default = "fazconfig.conf"
+}
+
 // FortiAnalyzer-VM hostname
 variable "faz_hostname" {
   type = string
